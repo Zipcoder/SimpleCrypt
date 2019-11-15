@@ -37,16 +37,28 @@ public class ROT13  {
         StringBuilder encrypted = new StringBuilder();
         for (int i = 0; i < text.length(); i++) {
             Integer index = getAlphabetIndex(text.charAt(i)) + delta;
-            char in = (!String.valueOf(text.charAt(i)).matches("[A-Za-z]")) ?
+            Character in = (!isAlpha(text.charAt(i))) ?
                     text.charAt(i) :
                     (index < alphabet.length) ?
                             alphabet[index] :
                             alphabet[index - alphabet.length];
-
-            encrypted.append(
-                    (i == 0 || in == ' ') ? in : String.valueOf(in).toLowerCase());
+            encrypted.append(matchCase(text.charAt(i), in));
         }
         return encrypted.toString();
+    }
+
+    public Character matchCase(Character in, Character out) {
+        if (isUpper(in)) out = out.toString().toUpperCase().charAt(0);
+        else out = out.toString().toLowerCase().charAt(0);
+        return out;
+    }
+
+    public Boolean isUpper(Character a) {
+        return String.valueOf(a).matches("[A-Z]");
+    }
+
+    public Boolean isAlpha(Character c) {
+        return String.valueOf(c).matches("[A-Za-z]");
     }
 
     public String decrypt(String text) {
@@ -57,9 +69,11 @@ public class ROT13  {
 
     public String rotate(String s, Character c) {
         StringBuilder rotated = new StringBuilder();
-        int delta = c.compareTo(s.charAt(0));
+        delta = c.compareTo(s.charAt(0));
         for (int i = 0; i < s.length(); i++) {
-            char in = (i+delta < s.length()) ? s.charAt(i+delta) : s.charAt(i+delta - s.length());
+            char in = (i+delta < s.length()) ?
+                    s.charAt(i+delta) :
+                    s.charAt(i+delta - s.length());
             rotated.append(in);
         }
         return rotated.toString();
