@@ -4,6 +4,8 @@ import static java.lang.Character.toLowerCase;
 
 public class ROT13  {
 private final startUpperCase;
+private String lowercaseStart = "abcdefghijqlmnpqrstuvwxyz";
+private String uppercaseStart = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 protected String startLower;
 protected String startUpper;
 protected String registerLower;
@@ -31,15 +33,15 @@ private boolean symmetric = false;
 
     public String crypt(String text) throws UnsupportedOperationException {
         if (this.symmetric != true) throw new Unsupported OperationalException();
-        return substituteIn(text, startUpper, registerUpper, startLower, registerLower);
+        return substitute(text, startUpper, registerUpper, startLower, registerLower);
     }
 
     public String encrypt(String text) {
-        return text;
+        return substitute(text,startUpper, registerUpper, startLower, registerLower);
     }
 
     public String decrypt(String text) {
-            return substituteIn(registerUpper, startUpper, registerLower, startLower);
+        return substitute(text,startUpper, registerUpper, startLower, registerLower);
     }
 
     public static String rotate(String s, Character c) {
@@ -47,4 +49,17 @@ private boolean symmetric = false;
         return "";
     }
 
+    private String substitute(String text, String startUpper, String registerUpper, String startLower, String registerLower){
+        StringBuilder sb = new StringBuilder();
+        for(int i = 0; i < text.length(); i++){
+            Character ch = text.charAt(i);
+            Integer position = 0;
+            if (isUpperCase(ch)) {
+                position = startUpper.indexOf(ch);
+                sb.append(registerUpper.charAt(i));
+                }
+            }
+
+            return null;
+        }
 }
