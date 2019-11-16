@@ -46,6 +46,7 @@ public class ROT13Test {
         System.out.println(actual);
         // Then
         assertTrue(actual.equals(s2));
+
     }
 
     @Test
