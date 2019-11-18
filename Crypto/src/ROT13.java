@@ -2,8 +2,9 @@
 import static java.lang.Character.isLowerCase;
 import static java.lang.Character.isUpperCase;
 import static java.lang.Character.toLowerCase;
-import java.io.File;
-import java.io.FileInputStream;
+
+import java.io.*;
+
 
 
 public class ROT13 {
@@ -11,7 +12,7 @@ public class ROT13 {
     private int shift;
 
 
-    ROT13(Character cs, Character cf) {
+    ROT13(Character cs, Character cf)  {
 
        shift=cf-cs;
     }
@@ -19,15 +20,13 @@ public class ROT13 {
     ROT13() {
 shift=0;
     }
-    //lets read a file ,encode it and write in 
+    //lets read a file ,encode it and write in
 
-   
 
-    
 
-    private void writeFile(String input, String s) {
-        
-    }
+
+
+
 
 
     public String crypt(String text) throws UnsupportedOperationException {
@@ -87,4 +86,10 @@ shift=0;
 
 
         }
-    }
+
+
+
+
+
+
+        }
