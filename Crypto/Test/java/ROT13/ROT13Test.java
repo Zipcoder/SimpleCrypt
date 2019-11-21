@@ -1,3 +1,6 @@
+package ROT13;
+
+
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -23,7 +26,7 @@ public class ROT13Test {
     public void rotateStringTest1() {
         // Given
         String s1 = "ABCDEF";
-        String s2 = "DEFABC";
+        String s2 = "DEFABC";  //DEFGHI
 
         // When
         ROT13 cipher = new ROT13();
