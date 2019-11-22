@@ -1,3 +1,4 @@
+import org.junit.Assert;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -86,6 +87,19 @@ public class ROT13Test {
         System.out.println(actual);
         // Then
         assertTrue(actual.equals(Q1));
+    }
+
+    @Test
+    public void myCryptTest(){
+
+        ROT13 test = new ROT13();
+
+        String actual = test.crypt("Bill");
+        String expected = "Ovyy";
+
+        Assert.assertEquals(expected, actual);
+
+
     }
 
 }
