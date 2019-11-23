@@ -1,6 +1,9 @@
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.io.File;
+import java.io.IOException;
+
 import static org.junit.Assert.*;
 
 public class ROT13Test {
@@ -90,14 +93,22 @@ public class ROT13Test {
     }
 
     @Test
-    public void myCryptTest(){
-
+    public void encryptFileTest() throws IOException {
+        File file = new File("/Users/brandonchambers/week5/SimpleCrypt/sonnet18.txt");
         ROT13 test = new ROT13();
 
-        String actual = test.crypt("Bill");
-        String expected = "Ovyy";
+        String expected = "Gubh neg zber ybiryl naq zber grzcrengr:\n" +
+                "Naq fhzzre’f yrnfr ungu nyy gbb fubeg n qngr;\n" +
+                "Naq bsgra vf uvf tbyq pbzcyrkvba qvzz'q;\n" +
+                "Ol punapr be angher’f punatvat pbhefr hagevzz'q;\n" +
+                "Abe ybfr cbffrffvba bs gung snve gubh bj’fg;\n" +
+                "Jura va rgreany yvarf gb gvzr gubh tebj’fg:\n" +
+                "   Fb ybat yvirf guvf, naq guvf tvirf yvsr gb gurr." + "\n";
 
-        Assert.assertEquals(expected, actual);
+
+        String actual = test.encrpytFile();
+
+      Assert.assertEquals(expected, actual);
 
 
     }

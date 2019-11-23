@@ -1,4 +1,5 @@
-import java.io.Console;
+import java.io.*;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 import static java.lang.Character.isLowerCase;
@@ -80,21 +81,37 @@ public class ROT13  {
         return result.toString();
     }
 
-    public static String getStringInput(String prompt) {
-        Scanner scanner = new Scanner(System.in);
-        println(prompt);
-        String userInput = scanner.nextLine();
-        return userInput;
-    }
+    //ROT OBJECT crpyt this file
+    //file = new File("sonnet18.txt");
 
-    public static void println(String output, Object... args) {
-        print(output + "\n", args);
-    }
+//Instantiate ROT13 and take in a file to be encrypted
+    public String encrpytFile() throws IOException, NoSuchElementException {
+        ROT13 rot = new ROT13();
 
-    public static void print(String output, Object... args) {
-        System.out.printf(output, args);
-    }
+        StringBuilder output = new StringBuilder();
+        String fileName = "sonnet18.enc";
+        try {
+            File f = new File("/Users/brandonchambers/week5/SimpleCrypt/sonnet18.txt");
+            BufferedWriter op = new BufferedWriter(new FileWriter(fileName));
 
+            Scanner out = new Scanner(f);
+
+
+            while ((out.nextLine()) != null) {
+                output.append(out.nextLine() + "\n");
+            }
+            op.write(rot.crypt(output.toString()));
+            op.close();
+        }
+        catch (NoSuchElementException noSuchException){
+
+        }
+        catch (IOException ioException){ } {
+
+        }
+
+        return rot.crypt(output.toString());
+    }
 }
 
 
