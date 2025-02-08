@@ -1,6 +1,8 @@
 # SimpleCrypt
 a simple set of crypt problems.
 
+Both Java & Data do this. (Need Python support)
+
 ### Part 1
 Create a few ciphers. Use String inside of your classes.
 
